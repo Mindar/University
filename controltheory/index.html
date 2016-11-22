@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <title>Heizungs Simulation</title>
+		 <script src="script.js" type="text/javascript"></script>
+         <link href="style.css" type="text/css" rel="stylesheet">
+	</head>
+	<body>
+        <div class="centerContainer">
+            <div id="controls">
+                <div class="multiButtonContainer">
+                    <button class="multiButton" id="scenario1" onclick="doScenario1();">Szenario 1</button>
+                    <button class="multiButton" id="scenario2" onclick="doScenario2();">Szenario 2</button>
+                    <button class="multiButton" id="scenario3" onclick="doScenario3();">Szenario 3</button>
+                    <button class="multiButton" id="scenario4" onclick="doScenario4();">Szenario 4</button>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+            <canvas id="diagrams" height="700" width="960" style="border:1px solid black;"></canvas>
+            <div id="debug"></div>
+        </div>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+html{
+    padding:0px;
+    margin:0px;
+}
+
+body{
+    padding:20px;
+    margin:0px;
+    font-family:'Segoe UI', 'Tahoma', 'Verdana', 'Arial', 'Screwyourfonts';
+}
+
+.multiButton {
+    padding: 30px;
+    margin:2px;
+    float:left;
+    border:0px;
+    background-color:#68C639;
+    color:#2B2B2B;
+    font-size:20px;
+    transition: all 0.3s;
+}
+
+.multiButtonContainer {
+    padding: 40px 0px 40px 0px;
+}
+
+.multiButton:hover{
+    background-color:#59AA31;
+    transition: all 0.3s;
+    cursor: pointer;
+}
