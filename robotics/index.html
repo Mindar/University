@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Robotics</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<script src="math.js" type="text/javascript"></script>
+	<script src="main.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="canvContainer" class="container">
+		<canvas id="xzCanvas" class="canv" height="450" width="450"></canvas>
+		<canvas id="xyCanvas" class="canv" height="450" width="450"></canvas>
+		<div style="clear:both;"></div>
+	</div>
+	<div id="input" class="container">
+		<h1>Input</h1>
+		<div class="listcontainer">
+			<ul>
+				<li>q1: <input type="number" id="q1" step="0.1" value="0" oninput="changedJoint();"></li>
+				<li>q2: <input type="number" id="q2" step="0.1" value="0" oninput="changedJoint();"></li>
+				<li>q3: <input type="number" id="q3" step="0.1" value="0" oninput="changedJoint();"></li>
+				<li>q4: <input type="number" id="q4" step="0.1" value="0" oninput="changedJoint();"></li>
+				<li>q5: <input type="number" id="q5" step="0.1" value="0" oninput="changedJoint();"></li>
+			</ul>
+			<ul>
+				<li>w1: <input type="number" id="w1" step="0.1" value="0" oninput="changedTool();"></li>
+				<li>w2: <input type="number" id="w2" step="0.1" value="0" oninput="changedTool();"></li>
+				<li>w3: <input type="number" id="w3" step="0.1" value="0" oninput="changedTool();"></li>
+				<li>w4: <input type="number" id="w4" step="0.1" value="0" oninput="changedTool();"></li>
+				<li>w5: <input type="number" id="w5" step="0.1" value="0" oninput="changedTool();"></li>
+				<li>w6: <input type="number" id="w5" step="0.1" value="0" oninput="changedTool();"></li>
+			</ul>
+			<ul>
+				<li><input type="checkbox" id="movementEnableBox" oninput="toggleMovement();"> enable movement</li>
+				<li><input type="checkbox" id="showJointFramesBox" oninput="toggleFrames();"> show joint frames</li>
+			</ul>
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	<div id="output" class="container">
+		<h1>Output</h1>
+	</div>
+</body>
+</html>
