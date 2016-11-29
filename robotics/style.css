@@ -1,0 +1,31 @@
+.container{
+	width: 900px;
+	min-height:100px;
+	margin:auto;
+	padding:0px;
+}
+
+.listcontainer ul{
+	float:left;
+	list-style-type: none;
+}
+
+.canv{
+	width: 450px;
+	height:450px;
+	float:left;
+}
+
+#enableMovement{
+	padding: 30px 0px 0px 0px;
+}
+
+html{
+	color:#333;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+	text-align: center;
+	font-weight: lighter;
+}
