@@ -6,6 +6,10 @@ let xzCanv, xyCanv;
 let xzCtx, xyCtx;
 let TMatrices = [];
 let jointCoords = [];
+let jointAngles = [5];
+let toolCoordinates = [6];
+let outtxt = "";
+let simulationUnchanged = false;
 
 function init(){
 	xzCanv = document.getElementById("xzCanvas");
@@ -41,17 +45,19 @@ function speed_dist(currentT, totalTime, rampTime){
 changes the transform matrices according to the given joint space angle input
 */
 function changedJoint(){
-	var q1 = document.getElementById("q1").value;
-	var q2 = document.getElementById("q2").value;
-	var q3 = document.getElementById("q3").value;
-	var q4 = document.getElementById("q4").value;
-	var q5 = document.getElementById("q5").value;
+	simulationUnchanged = false;
 
-	TMatrices[0] = calcT(q1, 26.04, 0    , -Math.PI / 2);
-	TMatrices[1] = calcT(q2, 0    , 22.86, 0           );
-	TMatrices[2] = calcT(q3, 0    , 22.86, 0           );
-	TMatrices[3] = calcT(q4, 0    , 0.95 , -Math.PI / 2);
-	TMatrices[4] = calcT(q5, 16.83, 0    , 0           );
+	jointAngles[0] = document.getElementById("q1").value;
+	jointAngles[1] = document.getElementById("q2").value;
+	jointAngles[2] = document.getElementById("q3").value;
+	jointAngles[3] = document.getElementById("q4").value;
+	jointAngles[4] = document.getElementById("q5").value;
+
+	TMatrices[0] = calcT(jointAngles[0], 26.04, 0    , -Math.PI / 2);
+	TMatrices[1] = calcT(jointAngles[1], 0    , 22.86, 0           );
+	TMatrices[2] = calcT(jointAngles[2], 0    , 22.86, 0           );
+	TMatrices[3] = calcT(jointAngles[3], 0    , 0.95 , -Math.PI / 2);
+	TMatrices[4] = calcT(jointAngles[4], 16.83, 0    , 0           );
 }
 
 function loop(){
@@ -62,12 +68,20 @@ function loop(){
 /*
 Transforms the given point from TransformMatrix[frameNumber] into the base coordinate system
 */
-function transformToTn(point, frameNumber){
-	if(frameNumber === 0){
+function transformToTn(frameNumber, point){
+	if(frameNumber == 0){
 		return math.multiply(TMatrices[0], point);
-	} else {
-		return transformToTn(math.multiply(TMatrices[frameNumber], point), frameNumber - 1);
+	} else if ((frameNumber > 0) && (frameNumber < TMatrices.length)) {
+		return transformToTn(frameNumber - 1, math.multiply(TMatrices[frameNumber], point));
 	}
+}
+
+function getXYCoords(vector){
+
+}
+
+function getXZCoords(vector){
+
 }
 
 function update(){
@@ -75,15 +89,22 @@ function update(){
 	var basePoint = math.matrix([[0],[0], [0], [1]]);
 	var projectedPoint = basePoint;
 
+	if(simulationUnchanged){
+		return;
+	}
+
+	console.log("updating");
+
 	jointsCoords = [];
 
 	for(var i = 0; i < TMatrices.length; i++){
-		jointsCoords.push(transformToTn(basePoint, i));
+		jointsCoords.push(transformToTn(i, basePoint));
 	}
 	/*
 		calc arm matrix from variables,
 		calc inverse kinematics
 	*/
+	simulationUnchanged = true;
 }
 
 function draw(){

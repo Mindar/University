@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Assignment 7</title>
+	<script src="math.js"></script>
+	<script src="main.js"></script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<canvas id="mycanv" width="500" height="500"></canvas>
+	<div>
+		<span class="red">x</span>
+		<span class="green">y</span>
+		<span class="blue">z</span><br>
+		<h1>Target Position</h1>
+		<p>
+			The robot will move from its current position to the given target position. If you want to simulate point to point maneuvers, move the robot to point 1 first, then enter the coordinates for point 2 and click "Simulate".
+		</p>
+		w1/x: <input type="number" id="w1" step="1" value="15"><br>
+		w2/y: <input type="number" id="w2" step="1" value="0.0"><br>
+		w3/z: <input type="number" id="w3" step="1" value="20"><br><br>
+		At least one of the following must be != 0:<br>
+		w4: <input type="number" id="w4" step="0.1" value="0"><br>
+		w5: <input type="number" id="w5" step="0.1" value="0"><br>
+		w5: <input type="number" id="w6" step="0.1" value="-1"><br><br>
+
+		time for maneuver: <input type="number" id="time" step="0.1" value="0"> in sec<br>
+		<button onclick="simulate();">Simulate</button>
+	</div>
+	<div id="debugOut">
+
+	</div>
+</body>
+</html>
